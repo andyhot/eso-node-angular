@@ -16,15 +16,13 @@ app.configure('development', function(){
   app.set('db uri', 'tcp://eso:eso@localhost/eso');
 });
 
-app.use(express.static(__dirname + '/../app'));
+app.configure('production', function(){
+  app.use(express.static(__dirname + '/../dist'));
+});
 
 app.configure(function(){
   // used to parse JSON object given in the request body
   app.use(express.bodyParser());
-});
-
-app.get('/', function(req, res){
-  res.send('eso api');
 });
 
 // API
