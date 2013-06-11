@@ -1,0 +1,15 @@
+{
+  "name": "eso-node",
+  "version": "0.1.0",
+  "dependencies": {
+    "pg": "latest",
+    "any-db": "latest",
+    "xml2js": "latest",
+    "eyes": "latest",
+    "express": "~3.2.5"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}
