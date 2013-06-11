@@ -51,8 +51,8 @@ app.get('/api/v1/players', function (request, response) {
 	}
 
   	pool.query(
-  		'SELECT id, code, trim (from firstname) as firstname, trim (from lastname) as lastname, fathername, mothername, to_char(birthdate, \'YYYY-MM-DD\') as birthdate, rating, clu_id ' + 
-  		'FROM players WHERE code::integer<100000 ' + queryPart + 
+  		'SELECT id, code, trim (from firstname) as firstname, trim (from lastname) as lastname, fathername, mothername, to_char(birthdate, \'YYYY-MM-DD\') as birthdate, rating, clu_id ' +
+  		'FROM players WHERE code::integer<100000 ' + queryPart +
   		'ORDER BY code LIMIT $1 OFFSET $2', qParams, function(err, result) {
 		//eyes.inspect(result);
 		if (err) {
@@ -84,7 +84,7 @@ app.get('/api/v1/clubs', function (request, response) {
 	}
 
   	pool.query(
-  		'SELECT id, code, trim (from name) as name ' + 
+  		'SELECT id, code, trim (from name) as name ' +
   		'FROM clubs WHERE greek=true ' + queryPart +
   		'ORDER BY code LIMIT $1 OFFSET $2', qParams, function(err, result) {
 		//eyes.inspect(result);
@@ -104,7 +104,7 @@ app.get('/api/v1/clubs/:id', function (request, response) {
 	var id = esoUtils.asInt(request.params, 'id');
 
   	pool.query(
-  		'SELECT id, code, trim (from name) as name ' + 
+  		'SELECT id, code, trim (from name) as name ' +
   		'FROM clubs WHERE id = $1', [id], function(err, result) {
 
 		if (err) {
@@ -128,7 +128,6 @@ app.get('/api/v1/clubs/:id/players', function (request, response) {
 		queryPart = '';
 	var qParams = [id, limit, offset];
 
-		// TODO: sql escape
 	if (hasQuery) {
 		if (q && q.length>2) {
 			queryPart = "AND lastname LIKE $4 ";
@@ -139,7 +138,7 @@ app.get('/api/v1/clubs/:id/players', function (request, response) {
 	}
 
   	pool.query(
-  		'SELECT id, code, trim (from firstname) as firstname, trim (from lastname) as lastname, fathername, mothername, to_char(birthdate, \'YYYY-MM-DD\') as birthdate, rating, clu_id ' + 
+  		'SELECT id, code, trim (from firstname) as firstname, trim (from lastname) as lastname, fathername, mothername, to_char(birthdate, \'YYYY-MM-DD\') as birthdate, rating, clu_id ' +
   		'FROM players WHERE code::integer<100000 AND clu_id= $1 ' + queryPart +
   		'ORDER BY code LIMIT $2 OFFSET $3', qParams, function(err, result) {
 		//eyes.inspect(result);
