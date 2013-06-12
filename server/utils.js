@@ -1,13 +1,17 @@
+'use strict';
 module.exports = {
 	asInt: function(obj, property, min, max) {
-		if (!min)
+		if (!min) {
 			min = 0;
-		var value = parseInt(obj[property]) || min;
-		if (value < min)
+    }
+		var value = parseInt(obj[property], 10) || min;
+		if (value < min) {
 			value = min;
+    }
 
-		if (max && value>max)
+		if (max && value>max) {
 			value=max;
+    }
 
 		return value;
 	}
