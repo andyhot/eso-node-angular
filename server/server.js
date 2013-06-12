@@ -33,8 +33,8 @@ var mainHandler = function (request, response) {
 };
 
 app.get('/', mainHandler);
-app.get('/clubs', mainHandler);
-app.get('/players', mainHandler);
+app.get(/^\/clubs(\/.*)?$/, mainHandler);
+app.get(/^\/players(\/.*)?$/, mainHandler);
 
 // API
 
