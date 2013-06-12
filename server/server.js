@@ -59,6 +59,25 @@ app.get('/api/v1/players', function (request, response) {
 	});
 });
 
+app.get('/api/v1/players/:id', function (request, response) {
+
+  var id = esoUtils.asInt(request.params, 'id');
+
+  pool.query(
+    'SELECT id, code, trim (from firstname) as firstname, trim (from lastname) as lastname, fathername, mothername, to_char(birthdate, \'YYYY-MM-DD\') as birthdate, rating, clu_id ' +
+    'FROM players WHERE id = $1', [id], function(err, result) {
+
+    if (err) {
+      response.json({'err':err});
+      return;
+    }
+
+    var rows = result.rows;
+    response.json({player: rows.length===1 ? rows[0] : null});
+  });
+
+});
+
 app.get('/api/v1/clubs', function (request, response) {
 
 	var offset = esoUtils.asInt(request.query, 'offset');

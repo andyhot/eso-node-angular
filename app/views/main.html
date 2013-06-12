@@ -1,9 +1,11 @@
 <div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now all have</p>
+  <h1>Search</h1>
+  <form ng-submit="search()">
+    <input type="text" name="q"/>
+  </form>
   <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
+      <li><a href="/clubs">Clubs</a></li>
+      <li><a href="/players">Players</a></li>
   </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
+
 </div>
