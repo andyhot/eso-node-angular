@@ -6,7 +6,8 @@
     "any-db": "latest",
     "xml2js": "latest",
     "eyes": "latest",
-    "express": "~3.2.5"
+    "express": "~3.2.5",
+    "ejs": "latest"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
