@@ -3,7 +3,7 @@
 angular.module('esoNodeApp')
   .controller('MainCtrl', function ($scope) {
     $scope.search = function() {
-      console.debug('need to search!');
+      // TODO
     };
   })
   .controller('ClubsCtrl', function ($scope, EsoResources) {
@@ -11,9 +11,23 @@ angular.module('esoNodeApp')
 
     $scope.clubs = Clubs.get();
   })
+  .controller('ClubPlayersCtrl', function ($scope, $routeParams, EsoResources) {
+    var Clubs = EsoResources.getClubs(),
+        ClubPlayers = EsoResources.getClubPlayers();
+
+    var id = $routeParams.id;
+    $scope.club = Clubs.get({id:id});
+    $scope.players = ClubPlayers.get({id:id});
+  })
   .controller('PlayersCtrl', function ($scope, EsoResources) {
     var Players = EsoResources.getPlayers();
 
     $scope.players = Players.get();
+  })
+  .controller('PlayerCtrl', function ($scope, $routeParams, EsoResources) {
+    var Players = EsoResources.getPlayers();
+
+    var id = $routeParams.id;
+    $scope.player = Players.get({id:id});
   })
   ;

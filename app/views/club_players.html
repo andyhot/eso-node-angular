@@ -1,0 +1,9 @@
+<div class="hero-unit">
+  <h1>{{club.club.name}}</h1>
+  <ul>
+  	<li ng-repeat="player in players.players">
+  <a href="/players/{{player.id}}">{{player.code}}</a> {{player.lastname}} {{player.firstname}} ({{player.birthdate}}) <a href="/clubs/{{player.clu_id}}">CLUB</a> {{player.rating}}
+	</li>
+  </ul>
+  <a href="/">Main</a>
+</div>

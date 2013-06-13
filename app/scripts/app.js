@@ -13,16 +13,16 @@ app.config(function ($routeProvider) {
       controller: 'ClubsCtrl'
     })
     .when('/clubs/:id', {
-      templateUrl: '/views/clubs.html',
-      controller: 'ClubsCtrl'
+      templateUrl: '/views/club_players.html',
+      controller: 'ClubPlayersCtrl'
     })
     .when('/players', {
       templateUrl: '/views/players.html',
       controller: 'PlayersCtrl'
     })
     .when('/players/:id', {
-      templateUrl: '/views/players.html',
-      controller: 'PlayersCtrl'
+      templateUrl: '/views/player.html',
+      controller: 'PlayerCtrl'
     })
     .otherwise({
       redirectTo: '/'
@@ -42,6 +42,9 @@ app.factory('EsoResources', function($resource) {
     },
     getClubs: function() {
       return $resource(prefix + '/clubs/:id', {id:'@id'});
+    },
+    getClubPlayers: function() {
+      return $resource(prefix + '/clubs/:id/players', {id:'@id'});
     }
   };
 });
