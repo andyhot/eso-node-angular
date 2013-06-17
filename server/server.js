@@ -2,23 +2,36 @@
 var anyDB = require('any-db');
 anyDB.adapters.postgres.forceJS = true;
 
-var conString = 'postgres://eso:eso@localhost/eso';
+var connData;
 
-var pool = anyDB.createPool(conString, {min: 2, max: 20});
+if (process.env.VCAP_SERVICES) {
+  console.log(process.env.VCAP_SERVICES);
+  var services = JSON.parse(process.env.VCAP_SERVICES);
+  var credentials = services['postgresql-9.1'][0].credentials;
+  connData = {
+    adapter: 'postgres',
+    host: credentials.host,
+    database: credentials.name,
+    user: credentials.username,
+    password: credentials.password
+  }
+} else {
+  connData = {
+    adapter: 'postgres',
+    host: 'localhost',
+    database: 'eso',
+    user: 'eso',
+    password: 'eso'
+  };
+}
+
+var pool = anyDB.createPool(connData, {min: 2, max: 20});
 
 var esoUtils = require('./utils.js');
 
 var eyes = require('eyes');
 var express = require('express');
 var app = express();
-
-app.configure('development', function(){
-  app.set('db uri', 'tcp://eso:eso@localhost/eso');
-});
-
-app.configure('production', function(){
-  app.use(express.static(__dirname + '/../dist'));
-});
 
 app.configure(function(){
   app.use(express.bodyParser());
@@ -33,6 +46,10 @@ app.use(function (request, response, next) {
   }
   next();
 
+});
+
+app.configure('production', function(){
+  app.use(express.static(__dirname + '/../dist'));
 });
 
 app.configure(function(){
