@@ -178,8 +178,7 @@ module.exports = function (grunt) {
       dist: {
         files: {
           '<%= yeoman.dist %>/styles/main.css': [
-            '.tmp/styles/{,*/}*.css',
-            '<%= yeoman.app %>/styles/{,*/}*.css'
+            '.tmp/styles/{,*/}*.css'
           ]
         }
       }
@@ -290,8 +289,8 @@ grunt.registerTask('my_server', 'Start a custom web server.', function() {
     'clean:server',
     'coffee',
     'compass',
-    'connect:test',
-    'karma'
+    'connect:test'/*,
+    'karma'*/
   ]);
 
   grunt.registerTask('build', [
