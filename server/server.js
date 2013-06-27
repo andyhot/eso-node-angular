@@ -11,6 +11,7 @@ if (process.env.VCAP_SERVICES) {
   connData = {
     adapter: 'postgres',
     host: credentials.host,
+    port: credentials.port,
     database: credentials.name,
     user: credentials.username,
     password: credentials.password

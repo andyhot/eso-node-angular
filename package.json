@@ -2,8 +2,8 @@
   "name": "eso-node",
   "version": "0.1.0",
   "dependencies": {
-    "pg": "latest",
-    "any-db": "latest",
+    "pg": "1.3.0",
+    "any-db": "0.6.0",
     "xml2js": "latest",
     "eyes": "latest",
     "express": "~3.2.5"
