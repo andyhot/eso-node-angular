@@ -1,10 +1,26 @@
 'use strict';
 
 angular.module('esoNodeApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.search = function() {
-      // TODO
+  .controller('MainCtrl', function ($scope, EsoResources) {
+    var Clubs = EsoResources.getClubs();
+    var Players = EsoResources.getPlayers();
+
+    $scope.data = {
+      q : null
     };
+    $scope.search = function() {
+      var q = $scope.data.q;
+      if (!q || q.length<3) {
+        $scope.clubs = null;
+        $scope.players = null;
+        return;
+      }
+
+      $scope.clubs = Clubs.get({q:q});
+      $scope.players = Players.get({q:q});
+    };
+
+    $scope.$watch('data.q', $scope.search);
   })
   .controller('ClubsCtrl', function ($scope, EsoResources) {
     var Clubs = EsoResources.getClubs();

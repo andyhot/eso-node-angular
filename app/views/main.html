@@ -1,11 +1,29 @@
 <div class="hero-unit">
-  <h1>Search</h1>
+  <h1>ESO</h1>
   <form ng-submit="search()">
-    <input type="text" name="q"/>
+    <input type="text" name="q" ng-model="data.q" autocomplete="off"/>
+    <button type="submit">Search</button>
   </form>
+
+  <div class="clubs" ng-show="clubs"><h2>Clubs</h2>
   <ul>
-      <li><a href="/clubs">Clubs</a></li>
-      <li><a href="/players">Players</a></li>
+    <li ng-repeat="club in clubs.clubs">
+  <a href="/clubs/{{club.id}}">{{club.code}}</a> {{club.name}}
+  </li>
+  </ul>
+  </div>
+
+  <div ng-show="players"><h2>Players</h2>
+    <ul>
+        <li ng-repeat="player in players.players">
+      <a href="/players/{{player.id}}">{{player.code}}</a> {{player.lastname}} {{player.firstname}} ({{player.birthdate}}) <a href="/clubs/{{player.clu_id}}">CLUB</a> {{player.rating}}
+      </li>
+    </ul>
+  </div>
+
+  <ul>
+      <li><a href="/clubs">Browse clubs</a></li>
+      <li><a href="/players">Browse players</a></li>
   </ul>
 
 </div>
