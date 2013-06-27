@@ -21,6 +21,13 @@ angular.module('esoNodeApp')
     };
 
     $scope.$watch('data.q', $scope.search);
+
+    $scope.showClubs = function() {
+      return $scope.clubs && $scope.clubs.clubs.length>0;
+    };
+    $scope.showPlayers = function() {
+      return $scope.players && $scope.players.players.length>0;
+    };
   })
   .controller('ClubsCtrl', function ($scope, EsoResources) {
     var Clubs = EsoResources.getClubs();
