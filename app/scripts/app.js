@@ -48,3 +48,16 @@ app.factory('EsoResources', function($resource) {
     }
   };
 });
+
+app.filter('publicDate', function(){
+  return function(text) {
+    if (!text)
+      return '-';
+
+    var parts = text.split('-');
+    if (parts.length!=3)
+      return text;
+
+    return parts[1] + '/' + parts[0];
+  };
+});

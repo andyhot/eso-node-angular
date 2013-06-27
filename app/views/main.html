@@ -16,7 +16,7 @@
   <div ng-show="showPlayers()"><h2>Players</h2>
     <ul>
         <li ng-repeat="player in players.players">
-      <a href="/players/{{player.id}}">{{player.code}}</a> {{player.lastname}} {{player.firstname}} ({{player.birthdate}}) <a href="/clubs/{{player.clu_id}}">CLUB</a> {{player.rating}}
+      <a href="/players/{{player.id}}">{{player.code}}</a> {{player.lastname}} {{player.firstname}} ({{player.birthdate|publicDate}}) <a href="/clubs/{{player.clu_id}}">CLUB</a> {{player.rating}}
       </li>
     </ul>
   </div>
