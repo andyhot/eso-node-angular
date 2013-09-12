@@ -262,7 +262,7 @@ module.exports = function (grunt) {
 
   grunt.renameTask('regarde', 'watch');
 
-grunt.registerTask('my_server', 'Start a custom web server.', function() {
+grunt.registerTask('eso-server-start', 'Start a custom web server.', function() {
   grunt.log.writeln('Starting custom web server');
 
   var app = require('./server/server.js');
@@ -281,7 +281,7 @@ grunt.registerTask('my_server', 'Start a custom web server.', function() {
     'compass:server',
     'livereload-start',
     //'connect:livereload',
-    'my_server',
+    'eso-server-start',
     'open',
     'watch'
   ]);

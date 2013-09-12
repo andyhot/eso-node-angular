@@ -1,5 +1,5 @@
 {
-  "name": "eso-node",
+  "name": "eso-node-angular",
   "version": "0.1.0",
   "dependencies": {
     "pg": "1.3.0",
