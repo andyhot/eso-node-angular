@@ -9,7 +9,7 @@ See it live at [http://eso.eu01.aws.af.cm/](http://eso.eu01.aws.af.cm/).
 Database
 --------
 
-In a postgres instance, create a db named `eso` owned by user `eso` with password `eso`! Then import the tables found at [andyhot/eso-data](http://github.com/andyhot/eso-data).
+In a postgres instance, create a db named `eso` owned by user `eso` with password `eso`! Then import the tables found at [andyhot/eso-data](http://github.com/chessfed-gr/eso-data).
 
 
 Installation
