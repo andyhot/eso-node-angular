@@ -1,5 +1,5 @@
-eso-node
-========
+eso-node-angular
+================
 
 A node + angularjs app for browsing / searching greek chess players.
 
